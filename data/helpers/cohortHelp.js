@@ -21,10 +21,7 @@ function findById(id) {
 
 function insert(cohort) {
     return db('cohorts')
-        .insert(cohort)
-        .then(ids => {
-            return getById(ids[0]);
-        })
+        .insert(cohort);
 };
 
 function update(id, change) {
@@ -40,5 +37,5 @@ function remove(id) {
 };
 
 function getStudentsByCohortID(id) {
-    return db('students').where('cohort_id', id);
+    return db('students').where('cohorts_id', id)
 };
