@@ -68,6 +68,21 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+//delete a cohort
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleted = await cohortDB.remove(req.params.id);
+        res.status(200).json({
+            message: 'Cohort deleted.'
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            message: 'Cohort was unable to be deleted.'
+        })
+    }
+})
+
 
 
 
